@@ -11,6 +11,7 @@
     "chalk": "^4.1.2",
     "firmata": "^2.3.0",
     "johnny-five": "^2.1.0",
+    "python": "0.0.4",
     "serialport": "^9.2.8"
   },
   "private": true
