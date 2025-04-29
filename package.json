@@ -9,9 +9,11 @@
   },
   "dependencies": {
     "chalk": "^4.1.2",
+    "express": "^4.21.2",
     "firmata": "^2.3.0",
     "johnny-five": "^2.1.0",
-    "serialport": "^9.2.8"
+    "serialport": "^9.2.8",
+    "socket.io": "^4.8.1"
   },
   "private": true
 }
