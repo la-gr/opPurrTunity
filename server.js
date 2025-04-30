@@ -10,12 +10,12 @@ const io = new Server(server);
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-//Serve static files (HTML, CSS, JS) from the "public" folder
-app.use(express.static(join(__dirname, 'public', 'src')));
+//Static files (HTML, CSS, JS) from the public folder
+app.use(express.static(join(__dirname, 'public')));
 
-//Route for map.html
-app.get('/map', (req, res) => {
-    res.sendFile(join(__dirname, 'public', 'src', 'map.html'));
+//Route for chat.html
+app.get('/chat', (req, res) => {
+    res.sendFile(join(__dirname, 'public', 'chat.html'));
 });
 
 //let players = {};
@@ -23,10 +23,10 @@ app.get('/map', (req, res) => {
 io.on('connection', (socket) => {
     console.log('A user connected');
 
-    /*socket.on('chat message', ({msg, colour}) => {
+    socket.on('chat message', ({msg, colour}) => {
         io.emit('chat message', {msg, colour});
     });
-
+/*
     socket.on('user', ({ username }) => {
         players[username] = {username,x: 0, y: 0, image: "resources/gF.png"};
         io.emit("update players", players);
@@ -55,6 +55,6 @@ io.on('connection', (socket) => {
     });
 });
 
-server.listen(3000, () => {
-    console.log(`Server running at http://localhost:3000`);
+server.listen(9000, () => {
+    console.log(`Server running at http://localhost:9000`);
 });
