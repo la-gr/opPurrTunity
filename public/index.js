@@ -1,79 +1,79 @@
-// const { Board, Button } = require("johnny-five");
-//
-// //Initialize the board
-// const board = new Board({
-//     port: 'COM4'
-// });
-//
-// board.on("ready", () => {
-//     console.log("Board is ready!");
-//     let moved = false;
-//
-//     //Button 1 on pin D2
-//     const up = new Button({
-//         pin: 2,
-//         isPullup: false  // Using external pull-down
-//     });
-//
-//     //Button 2 on pin D3
-//     const down = new Button({
-//         pin: 3,
-//         isPullup: false  // Using external pull-down
-//     });
-//
-//     //Button 3 on pin D3
-//     const left = new Button({
-//         pin: 4,
-//         isPullup: false  // Using external pull-down
-//     });
-//
-//     //Button 4 on pin D3
-//     const right = new Button({
-//         pin: 5,
-//         isPullup: false  // Using external pull-down
-//     });
-//
-//     //when button 1 clicked
-//     up.on("down", () => {
-//         console.log("Hello");
-//         cursorY = Math.max(0, cursorY - 1);
-//         moved = true;
-//     });
-//
-//     //when button 2 clicked
-//     down.on("down", () => {
-//         console.log("World");
-//         cursorY = Math.min(gridHeight - 1, cursorY + 1);
-//         moved = true;
-//     });
-//
-//     //when button 3 clicked
-//     left.on("down", () => {
-//         console.log("here");
-//         cursorX = Math.max(0, cursorX - 1);
-//         moved = true;
-//     });
-//
-//     right.on("down", () => {
-//         console.log("not here");
-//         cursorX = Math.min(gridWidth - 1, cursorX + 1);
-//         moved = true;
-//     });
-//
-//     if (moved) {
-//         paintAtCursor();
-//     }
-//
-//     render();
-//
-//     console.log("Press Button 1 (D2) or Button 2 (D3) to test!");
-// });
-//
-// //errors
-// board.on("error", (err) => {
-//     console.error("Board error:", err);
-// });
-//
+const { Board, Button } = require("johnny-five");
+
+//Initialize the board
+const board = new Board({
+    port: 'COM4'
+});
+
+board.on("ready", () => {
+    console.log("Board is ready!");
+    let moved = false;
+
+    //Button 1 on pin D2
+    const up = new Button({
+        pin: 2,
+        isPullup: false  // Using external pull-down
+    });
+
+    //Button 2 on pin D3
+    const down = new Button({
+        pin: 3,
+        isPullup: false  // Using external pull-down
+    });
+
+    //Button 3 on pin D3
+    const left = new Button({
+        pin: 4,
+        isPullup: false  // Using external pull-down
+    });
+
+    //Button 4 on pin D3
+    const right = new Button({
+        pin: 5,
+        isPullup: false  // Using external pull-down
+    });
+
+    //when button 1 clicked
+    up.on("down", () => {
+        console.log("Hello");
+        cursorY = Math.max(0, cursorY - 1);
+        moved = true;
+    });
+
+    //when button 2 clicked
+    down.on("down", () => {
+        console.log("World");
+        cursorY = Math.min(gridHeight - 1, cursorY + 1);
+        moved = true;
+    });
+
+    //when button 3 clicked
+    left.on("down", () => {
+        console.log("here");
+        cursorX = Math.max(0, cursorX - 1);
+        moved = true;
+    });
+
+    right.on("down", () => {
+        console.log("not here");
+        cursorX = Math.min(gridWidth - 1, cursorX + 1);
+        moved = true;
+    });
+
+    if (moved) {
+        paintAtCursor();
+    }
+
+    render();
+
+    console.log("Press Button 1 (D2) or Button 2 (D3) to test!");
+});
+
+//errors
+board.on("error", (err) => {
+    console.error("Board error:", err);
+});
+
 
 
 const brush = document.getElementById("brush");
