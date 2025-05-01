@@ -3,32 +3,22 @@
 <head>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Pet Chat</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Mansalva&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
-            padding-bottom: 3rem;
-            font-family: "Mansalva", sans-serif;
+            padding: 0 0 50px;
             font-weight: 400;
             font-style: normal;
             font-size: 24px;
             color: #460202;
         }
-        #form { background: rgba(0, 0, 0, 0.15); padding: 0.25rem; position: fixed; bottom: 0; left: 300px; right: 300px; display: flex; height: 3rem; box-sizing: border-box; backdrop-filter: blur(10px); }
-        #input { border: none; padding: 0 1rem; flex-grow: 1; border-radius: 2rem; margin: 0.25rem;  }
-        #input:focus { outline: none; }
-        #form > button { background: #333; border: none; padding: 0 1rem; margin: 0.25rem; border-radius: 3px; outline: none; color: #fff; }
         #messages {
             border-radius: 25px;
             list-style-type: none;
             margin: 0;
             padding: 0;
-            position: fixed;
             left: 5px;
             top: 5px;
-            width: 400px;
             background-color: #ffffff;
         }
         #messages > li {
