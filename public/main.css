@@ -141,6 +141,10 @@ button.active {
     background-size: 40px;
 }
 
+#brush{
+    background-color: #6c6c6c;
+}
+
 #clear {
     height: 50px;
     width: 50px;
@@ -155,5 +159,16 @@ button.active {
     border-bottom: black 2px solid;
     border-right: black 2px solid;
     transform: translateY(1px) translateX(1px);
+}
+
+#chat-container{
+    display:flex;
+    flex-direction: column;
+    height: 90%;
+    width: 30%;
+    border: 10px solid #c3c3c3;
+    background-color: white;
+    box-shadow: 3px 3px 3px #000000, 3px 3px 3px #000000 inset,  -2px -2px 2px #fdffff, -2px -2px 2px #fdffff inset;
+    margin-left: 30px;
 }
 
