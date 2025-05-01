@@ -93,6 +93,7 @@ const clear = document.getElementById("clear");
 clear.addEventListener("click", (e) => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     offCtx.clearRect(0, 0, canvas.width, canvas.height);
+    window.location.href = "chat.html";
 
     //keep cursor highlighted
     ctx.strokeStyle = "#008080FF";
