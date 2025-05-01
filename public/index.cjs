@@ -1,9 +1,10 @@
 const { Board, Button } = require("johnny-five");
 
 //Initialize the board
-const board = new Board({
+/*const board = new d({
     port: 'COM4'
-});
+});*/
+const board = new Board();
 
 board.on("ready", () => {
     console.log("Board is ready!");
@@ -29,8 +30,6 @@ board.on("ready", () => {
     button2.on("down", () => {
         console.log("World");
     });
-
-    console.log("Press Button 1 (D2) or Button 2 (D3) to test!");
 });
 
 //errors
