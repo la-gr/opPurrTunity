@@ -174,7 +174,7 @@ button.active {
 
 #chat{
     height: 94%;
-    overflow-y: auto;         /* scrolls vertically when full */
+    overflow-y: auto;
     padding: 10px;
 }
 
@@ -189,3 +189,4 @@ button.active {
 #messages > li {
     word-wrap: break-word;
     padding: 0.5rem 1rem;
+}
