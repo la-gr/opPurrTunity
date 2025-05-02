@@ -175,12 +175,15 @@
             }
         });
 
+        const messageInput = document.getElementById("messages");
+
         socket.on('chat message', ({msg, colour}) => {
             const item = document.createElement('li');
             item.style.color = colour;
             item.textContent = msg; //set the item to the user's entered message
             messages.appendChild(item); //add the message to the ul
-            window.scrollTo(0, document.chat.scrollHeight); //scrolls the messages
+            messages.scrollTop = messages.scrollHeight; //scrolls
+            // window.scrollTo(0, document.messages.scrollHeight); //scrolls the messages
             //socket.auth.serverOffset = serverOffset;
         });
     }
