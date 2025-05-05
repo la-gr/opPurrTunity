@@ -17,9 +17,9 @@ const arduinoProcess = fork('./index.cjs');
 //Static files (HTML, CSS, JS) from the public folder
 app.use(express.static(join(__dirname, 'public')));
 
-//Route for chat.html
-app.get('/chat', (req, res) => {
-    res.sendFile(join(__dirname, 'public', 'chat.html'));
+//Route for index.html
+app.get('/index', (req, res) => {
+    res.sendFile(join(__dirname, 'public', 'index.html'));
 });
 
 //for the arduino button click
