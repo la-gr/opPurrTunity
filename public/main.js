@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const clickSound = new Audio('audio/button click.mp3');
 
     //play a sound everytime a button is clicked
-//play a sound everytime a button is clicked
     buttons.forEach(button => {
         button.addEventListener("click", () => {
             clickSound.volume = 0.4;
@@ -47,52 +46,11 @@ document.addEventListener("DOMContentLoaded", () => {
     ctx.lineWidth = 2;
     ctx.strokeRect(cursorX * pixelSize, cursorY * pixelSize, pixelSize, pixelSize);
 
-    //paint if buttons are pressed
-    /*document.addEventListener("keydown", (e) => {
-    let selectedColour = "#000000"
-    let selectedTool = "brush";
-    let draw = true;
-
-    let cursorX = 0;
-    let cursorY = 0;
-
-//highlight cursor position
-    ctx.strokeStyle = "#008080FF";
-    ctx.lineWidth = 2;
-    ctx.strokeRect(cursorX * pixelSize, cursorY * pixelSize, pixelSize, pixelSize);
-
-//paint if buttons are pressed
-    document.addEventListener("keydown", (e) => {
-        if (draw === false) {
-            return;
-        }
-        let moved = false;
-
-        if (e.key === "w") {
-            cursorY = Math.max(0, cursorY - 1);
-            moved = true;
-        }
-        if (e.key === "s") {
-            cursorY = Math.min(gridHeight - 1, cursorY + 1);
-            moved = true;
-        }
-        if (e.key === "a") {
-            cursorX = Math.max(0, cursorX - 1);
-            moved = true;
-        }
-        if (e.key === "d") {
-            cursorX = Math.min(gridWidth - 1, cursorX + 1);
-            moved = true;
-        }
-
-        if (moved) {
-            paintAtCursor();
-        }
-
-        render();
-    });*/
     socket.on('but', (numToSend) => {
         let moved = false;
+        if (draw === false){
+            return;
+        }
         if (numToSend === 1){
             cursorY = Math.max(0, cursorY - 1);
             moved = true;
@@ -108,6 +66,17 @@ document.addEventListener("DOMContentLoaded", () => {
         if (numToSend === 4){
             cursorX = Math.min(gridWidth - 1, cursorX + 1);
             moved = true;
+        }
+        if (numToSend === 5){
+
+        }
+        if (numToSend === 6){
+            if (draw === false){
+                draw = true;
+            } else{
+                draw = false;
+                startChat();
+            }
         }
         if (moved) {
             paintAtCursor();
@@ -146,24 +115,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-    document.addEventListener("keydown", (e) => {
-        if (e.key === "e") {
-            if (draw === true) {
-                draw = false;
-                startChat();
-                console.log(draw);
-            } else if (draw === false) {
-                draw = true;
-            }
-        }
-    })
+    // document.addEventListener("keydown", (e) => {
+    //     if (e.key === "e") {
+    //         if (draw === true) {
+    //             draw = false;
+    //             startChat();
+    //             console.log(draw);
+    //         } else if (draw === false) {
+    //             draw = true;
+    //         }
+    //     }
+    // })
 
 //CHAT
     document.getElementById("chat");
 
     function startChat() {
         const socket = io();
-        console.log("in");
         let colour = generateRandomColor(); //sets the colour of the text
         function generateRandomColor() {
             let randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
@@ -181,33 +149,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
         //message if buttons are pressed
         let msg = "";
-        document.addEventListener("keydown", (e) => {
+        socket.on('but', (numToSend) => {
             if (draw === true) {
                 return;
             }
-            e.preventDefault();
-            //enters a cat or dog sound on button click
-            if (e.key === "w") {
+            if (numToSend === 1){
                 console.log("here")
                 msg = language[3];
                 socket.emit('chat message', {msg, colour});
             }
-            if (e.key === "s") {
+            if (numToSend === 2){
                 msg = language[0];
                 socket.emit('chat message', {msg, colour});
             }
-            if (e.key === "a") {
+            if (numToSend === 3){
                 msg = language[1];
                 socket.emit('chat message', {msg, colour});
             }
-            if (e.key === "d") {
+            if (numToSend === 4){
                 msg = language[2];
                 socket.emit('chat message', {msg, colour});
             }
-            if (e.key === "e") { //goes back to canvas
-                window.location.href = "index.html";
+            if (numToSend === 6){ //goes back to canvas
+                draw = true;
             }
-            if (e.key === "f") { //changes to dog or cat language
+            if (numToSend === 5){ //changes to dog or cat language
                 if (n === 1) {
                     language = cats;
                     n = 0;
