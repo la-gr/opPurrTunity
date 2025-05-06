@@ -5,47 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Canvas</title>
     <link rel="stylesheet" href="main.css">
-    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Tiny5&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Tiny5&display=swap"
+          rel="stylesheet">
     <script type="module" src="/socket.io/socket.io.js"></script>
     <script type="module" src="main.js"></script>
 </head>
 
 <body>
 <div id="title-container"></div>
-<div id="main-container"></div>
-<div class="canvas-container" id="canvas-container">
-    <div class="title-bar">
-<!--        <div class="title-bar-icon"></div>-->
-        <div class="title-bar-text">Canvas</div>
-        <div class="title-bar-controls">
-            <button aria-label="Minimize"></button>
-            <button aria-label="Maximize"></button>
-            <button aria-label="Close"></button>
+<div id="main-container">
+    <div class="canvas-container" id="canvas-container">
+        <div class="title-bar">
+            <!--        <div class="title-bar-icon"></div>-->
+            <div class="title-bar-text">Canvas</div>
+            <div class="title-bar-controls">
+                <button aria-label="Minimize"></button>
+                <button aria-label="Maximize"></button>
+                <button aria-label="Close"></button>
+            </div>
+        </div>
+
+        <canvas id="canvas"></canvas>
+
+        <div class="toolbar">
+            <div class="tools">
+                <button class="tool-button" data-tool="brush" id="brush"
+                        style="background-image: url('icon/pencil.png')"></button>
+            </div>
+            <button id="clear" style="background-image: url('icon/bin.png')"></button>
         </div>
     </div>
 
-    <canvas id="canvas"></canvas>
 
-    <div class="toolbar">
-        <div class="tools">
-            <button class="tool-button" data-tool="brush" id="brush" style="background-image: url('icon/pencil.png')"></button>
+    <div class="chat-container" id="chat-container">
+        <div class="title-bar">
+            <!--        <div class="title-bar-icon"></div>-->
+            <div class="title-bar-text">Chat</div>
+            <div class="title-bar-controls">
+                <button aria-label="Minimize"></button>
+                <button aria-label="Maximize"></button>
+                <button aria-label="Close"></button>
+            </div>
         </div>
-        <button id="clear" style="background-image: url('icon/bin.png')"></button>
-    </div>
-</div>
-
-<div class="chat-container" id="chat-container">
-    <div class="title-bar">
-        <!--        <div class="title-bar-icon"></div>-->
-        <div class="title-bar-text">Chat</div>
-        <div class="title-bar-controls">
-            <button aria-label="Minimize"></button>
-            <button aria-label="Maximize"></button>
-            <button aria-label="Close"></button>
+        <div class="chat" id="chat">
+            <ul id="messages"></ul>
         </div>
-    </div>
-    <div class="chat" id="chat">
-        <ul id="messages"></ul>
     </div>
 </div>
 </body>

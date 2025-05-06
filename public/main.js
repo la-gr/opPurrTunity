@@ -86,34 +86,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
-    function paintAtCursor() {
-        offCtx.fillStyle = selectedColour;
-        offCtx.fillRect(cursorX, cursorY, 1, 1);
-    }
+        function paintAtCursor() {
+            offCtx.fillStyle = selectedColour;
+            offCtx.fillRect(cursorX, cursorY, 1, 1);
+        }
 
-    function render() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.imageSmoothingEnabled = false;
-        ctx.drawImage(offscreenCanvas, 0, 0, canvas.width, canvas.height);
+        function render() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.imageSmoothingEnabled = false;
+            ctx.drawImage(offscreenCanvas, 0, 0, canvas.width, canvas.height);
 
-        //highlight cursor
-        ctx.strokeStyle = "#008080FF";
-        ctx.lineWidth = 2;
-        ctx.strokeRect(cursorX * pixelSize, cursorY * pixelSize, pixelSize, pixelSize);
-    }
+            //highlight cursor
+            ctx.strokeStyle = "#008080FF";
+            ctx.lineWidth = 2;
+            ctx.strokeRect(cursorX * pixelSize, cursorY * pixelSize, pixelSize, pixelSize);
+        }
 
-    const clear = document.getElementById("clear");
+        const clear = document.getElementById("clear");
 
-    clear.addEventListener("click", (e) => {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        offCtx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        //keep cursor highlighted
-        ctx.strokeStyle = "#008080FF";
-        ctx.lineWidth = 2;
-        ctx.strokeRect(cursorX * pixelSize, cursorY * pixelSize, pixelSize, pixelSize);
-    });
-});
+        clear.addEventListener("click", (e) => {
+            // Convert the canvas to data
+            var image = offscreenCanvas.toDataURL();
+// Create a link
+            var aDownloadLink = document.createElement('a');
+// Add the name of the file to the link
+            aDownloadLink.download = 'canvas.png';
+// Attach the data to the link
+            aDownloadLink.href = image;
+// Get the code to click the download link
+            aDownloadLink.click();
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            offCtx.clearRect(0, 0, canvas.width, canvas.height);
+
+            //keep cursor highlighted
+            ctx.strokeStyle = "#008080FF";
+            ctx.lineWidth = 2;
+            ctx.strokeRect(cursorX * pixelSize, cursorY * pixelSize, pixelSize, pixelSize);
+        });
 
     // document.addEventListener("keydown", (e) => {
     //     if (e.key === "e") {
@@ -128,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // })
 
 //CHAT
-    document.getElementById("chat");
+        document.getElementById("chat");
 
     function startChat() {
         const socket = io();
@@ -141,11 +151,11 @@ document.addEventListener("DOMContentLoaded", () => {
             return randomColor;
         }
 
-        const messages = document.getElementById('messages');
-        const cats = ["meow", "hiss", "purr", "miaou"]; //cat sounds
-        const dogs = ["bark", "woof", "arf", "ruff"]; //dog sounds
-        let language = cats; //current language that the buttons will enter
-        let n = 0;
+            const messages = document.getElementById('messages');
+            const cats = ["meow", "hiss", "purr", "miaou"]; //cat sounds
+            const dogs = ["bark", "woof", "arf", "ruff"]; //dog sounds
+            let language = cats; //current language that the buttons will enter
+            let n = 0;
 
         //message if buttons are pressed
         let msg = "";
@@ -184,16 +194,18 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        const messageInput = document.getElementById("messages");
+            const messageInput = document.getElementById("messages");
 
-        socket.on('chat message', ({msg, colour}) => {
-            const item = document.createElement('li');
-            item.style.color = colour;
-            item.textContent = msg; //set the item to the user's entered message
-            messages.appendChild(item); //add the message to the ul
-            messages.scrollTop = messages.scrollHeight; //scrolls
-            // window.scrollTo(0, document.messages.scrollHeight); //scrolls the messages
-            //socket.auth.serverOffset = serverOffset;
-        });
-    }
+            socket.on('chat message', ({msg, colour}) => {
+                const item = document.createElement('li');
+                item.style.color = colour;
+                item.textContent = msg; //set the item to the user's entered message
+                messages.appendChild(item); //add the message to the ul
+                messages.scrollTop = messages.scrollHeight; //scrolls
+                // window.scrollTo(0, document.messages.scrollHeight); //scrolls the messages
+                //socket.auth.serverOffset = serverOffset;
+            });
+        }
+
+})
 
