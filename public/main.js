@@ -47,6 +47,8 @@ document.addEventListener("DOMContentLoaded", () => {
     ctx.strokeRect(cursorX * pixelSize, cursorY * pixelSize, pixelSize, pixelSize);
 
     socket.on('but', (numToSend) => {
+        console.log("in button");
+        console.log(numToSend);
         let moved = false;
         if (draw === false){
             return;
@@ -62,10 +64,12 @@ document.addEventListener("DOMContentLoaded", () => {
         if (numToSend === 3){
             cursorX = Math.max(0, cursorX - 1);
             moved = true;
+            console.log("3333");
         }
         if (numToSend === 4){
             cursorX = Math.min(gridWidth - 1, cursorX + 1);
             moved = true;
+            console.log("4444");
         }
         if (numToSend === 5){
 
@@ -159,7 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         //message if buttons are pressed
         let msg = "";
-        socket.on('but', (numToSend) => {
+        /*socket.on('but', (numToSend) => {
             if (draw === true) {
                 return;
             }
@@ -192,7 +196,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     n = 1;
                 }
             }
-        });
+        });*/
 
             const messageInput = document.getElementById("messages");
 
