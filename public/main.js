@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let selectedColour = "#000000"
     let selectedTool = "brush";
-    let draw = false;
+    let draw = true;
 
     let cursorX = 0;
     let cursorY = 0;
@@ -72,7 +72,24 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log("4444");
         }
         if (numToSend === 5){
+            // Convert the canvas to data
+            var image = offscreenCanvas.toDataURL();
+// Create a link
+            var aDownloadLink = document.createElement('a');
+// Add the name of the file to the link
+            aDownloadLink.download = 'canvas.png';
+// Attach the data to the link
+            aDownloadLink.href = image;
+// Get the code to click the download link
+            aDownloadLink.click();
 
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            offCtx.clearRect(0, 0, canvas.width, canvas.height);
+
+            //keep cursor highlighted
+            ctx.strokeStyle = "#008080FF";
+            ctx.lineWidth = 2;
+            ctx.strokeRect(cursorX * pixelSize, cursorY * pixelSize, pixelSize, pixelSize);
         }
         if (numToSend === 6){
             if (draw === false){
@@ -108,7 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const clear = document.getElementById("clear");
 
-        clear.addEventListener("click", (e) => {
+        /*clear.addEventListener("click", (e) => {
             // Convert the canvas to data
             var image = offscreenCanvas.toDataURL();
 // Create a link
@@ -127,7 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
             ctx.strokeStyle = "#008080FF";
             ctx.lineWidth = 2;
             ctx.strokeRect(cursorX * pixelSize, cursorY * pixelSize, pixelSize, pixelSize);
-        });
+        });*/
 
     // document.addEventListener("keydown", (e) => {
     //     if (e.key === "e") {
@@ -163,7 +180,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         //message if buttons are pressed
         let msg = "";
-        /*socket.on('but', (numToSend) => {
+        socket.on('but', (numToSend) => {
             if (draw === true) {
                 return;
             }
@@ -196,7 +213,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     n = 1;
                 }
             }
-        });*/
+        });
 
             const messageInput = document.getElementById("messages");
 
