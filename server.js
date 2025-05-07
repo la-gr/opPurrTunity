@@ -24,9 +24,11 @@ app.get('/index', (req, res) => {
 
 //for the arduino button click
 arduinoProcess.on('message', (message) => {
+    console.log("Received message:");
     if (message.type === 'buttonEvent') {
         const numToSend = message.num;
         io.emit('but', numToSend);
+        console.log("made to server");
     }
 });
 
