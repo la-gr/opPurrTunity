@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // const socket = io();
+    const socket = io();
 
     //show draw mode is active on default
     const canvasContainer = document.getElementById('canvas-container');
