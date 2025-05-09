@@ -1,11 +1,11 @@
 {
   "name": "ARduinoTest",
   "version": "1.0.0",
-  "description": "",
   "main": "index.cjs",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "dependencies": {
     "chalk": "^4.1.2",
@@ -15,5 +15,18 @@
     "serialport": "^9.2.8",
     "socket.io": "^4.8.1"
   },
-  "private": true
+  "private": true,
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/la-gr/opPurrTunity.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/la-gr/opPurrTunity/issues"
+  },
+  "homepage": "https://github.com/la-gr/opPurrTunity#readme",
+  "description": ""
 }

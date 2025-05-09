@@ -69,6 +69,11 @@ button.active {
     box-shadow: 3px 3px 3px #000000, 3px 3px 3px #000000 inset,  -2px -2px 2px #fdffff, -2px -2px 2px #fdffff inset;
 }
 
+.canvas-container.active {
+    /*border: 10px solid #aaaaaa;*/
+    box-shadow: 0 0 0 2px #dfe300, 3px 3px 5px 3px #000000, 3px 3px 3px #000000 inset,  -2px -2px 2px 2px #fdffff, -2px -2px 2px #fdffff inset;
+}
+
 .title-bar {
     background-color: #081fc5;
     height:6%;
@@ -141,6 +146,10 @@ button.active {
     z-index: 10;
 }
 
+.toolbar.active {
+    /*background-color: #aaaaaa;*/
+}
+
 .tools {
     width: 100%;
     height: 100%;
@@ -191,6 +200,12 @@ button.active {
     background-color: white;
     box-shadow: 3px 3px 3px #000000, 3px 3px 3px #000000 inset,  -2px -2px 2px #fdffff, -2px -2px 2px #fdffff inset;
     margin-left: 30px;
+}
+
+#chat-container.active {
+    border: 10px solid #aaaaaa;
+    box-shadow: 0 0 0 2px #dfe300, 3px 3px 5px 3px #000000, 3px 3px 3px #000000 inset,  -2px -2px 2px 2px #fdffff, -2px -2px 2px #fdffff inset;
+
 }
 
 #chat{

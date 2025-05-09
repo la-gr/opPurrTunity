@@ -1,7 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const socket = io();
-  
-    const brush = document.getElementById("brush");
+    // const socket = io();
+
+    //show draw mode is active on default
+    const canvasContainer = document.getElementById('canvas-container');
+    const toolbar = document.getElementById('toolbar');
+    canvasContainer.classList.add('active');
+    toolbar.classList.add('active');
+
     const buttons = document.querySelectorAll("button");
     const clickSound = new Audio('audio/button click.mp3');
 
@@ -33,9 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     offscreenCanvas.width = gridWidth;
     offscreenCanvas.height = gridHeight;
 
-
     let selectedColour = "#000000"
-    let selectedTool = "brush";
     let draw = true;
 
     let cursorX = 0;
@@ -53,25 +56,25 @@ document.addEventListener("DOMContentLoaded", () => {
         if (draw === false){
             return;
         }
-        if (numToSend === 1){
+        if (numToSend === 1){ //move up
             cursorY = Math.max(0, cursorY - 1);
             moved = true;
         }
-        if (numToSend === 2){
+        if (numToSend === 2){ //move down
             cursorY = Math.min(gridHeight - 1, cursorY + 1);
             moved = true;
         }
-        if (numToSend === 3){
+        if (numToSend === 3){ //move left
             cursorX = Math.max(0, cursorX - 1);
             moved = true;
             console.log("3333");
         }
-        if (numToSend === 4){
+        if (numToSend === 4){ //move right
             cursorX = Math.min(gridWidth - 1, cursorX + 1);
             moved = true;
             console.log("4444");
         }
-        if (numToSend === 5){
+        if (numToSend === 5){ //clear and save drawing
             // Convert the canvas to data
             var image = offscreenCanvas.toDataURL();
 // Create a link
@@ -91,13 +94,14 @@ document.addEventListener("DOMContentLoaded", () => {
             ctx.lineWidth = 2;
             ctx.strokeRect(cursorX * pixelSize, cursorY * pixelSize, pixelSize, pixelSize);
         }
-        if (numToSend === 6){
+        if (numToSend === 6){ //switch between chat and canvas
             if (draw === false){
                 draw = true;
             } else{
                 draw = false;
                 startChat();
             }
+            updateBorder();
         }
         if (moved) {
             paintAtCursor();
@@ -157,6 +161,22 @@ document.addEventListener("DOMContentLoaded", () => {
     //         }
     //     }
     // })
+
+    function updateBorder(){
+        const canvasContainer = document.getElementById("canvas-container");
+        const chatContainer = document.getElementById("chat-container");
+        const toolbar = document.getElementById("toolbar");
+
+        if (draw){
+            canvasContainer.classList.add("active");
+            toolbar.classList.add("active");
+            chatContainer.classList.remove("active");
+        }else{
+            canvasContainer.classList.remove("active");
+            toolbar.classList.remove("active");
+            chatContainer.classList.add("active");
+        }
+    }
 
 //CHAT
         document.getElementById("chat");
